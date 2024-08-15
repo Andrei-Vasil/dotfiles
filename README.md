@@ -1,5 +1,11 @@
 # Recommended utils
 
+## oh-my-zsh
+Install [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/wiki):
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
 ## Stow
 Manage symlinks with [stow](https://www.gnu.org/software/stow/) \
 To install, just use your package manager e.g. `sudo apt install stow` \
