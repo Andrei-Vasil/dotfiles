@@ -7,11 +7,16 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```
 
 ## Stow
-Manage symlinks with [stow](https://www.gnu.org/software/stow/) \
-To install, just use your package manager e.g. `sudo apt install stow` \
-Further reading on [.stow-local-ignore](https://www.gnu.org/software/stow/manual/html_node/Types-And-Syntax-Of-Ignore-Lists.html) \
-Run with `stow .` \
-If you have conflicting files, adopt them in this directory with `stow --adopt .`
+Install [stow](https://www.gnu.org/software/stow/):
+```sh
+sudo apt install stow  # use your preferred package manager
+```
+Run:
+```sh
+stow .
+stow --adopt .  # if you have conflicting files, adopt them in this directory
+```
+Further reading on [.stow-local-ignore](https://www.gnu.org/software/stow/manual/html_node/Types-And-Syntax-Of-Ignore-Lists.html)
 
 ## powerlevel10k
 Add p10k to oh my zsh themes: 
@@ -26,4 +31,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ```
 
 ## Tmux
-TBD
+Install [tmux](https://github.com/tmux/tmux/wiki):
+```sh
+sudo apt install tmux  # use your preferred package manager
+```
