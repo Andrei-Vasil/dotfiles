@@ -120,6 +120,8 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Personal preferences
-source ~/.shell.config/ls.sh
+for file in ~/.shell.config/*.sh; do
+  source "$file"
+done
 
 export PATH="$HOME/.local/bin:$PATH"
