@@ -6,7 +6,7 @@ import re
 RED = '\033[91m'
 RESET = '\033[0m'
 
-PROXY_PORT = 1080
+PROXY_PORT = 1081
 KUBE_CONFIG_LOCATION = f'{os.environ["HOME"]}/.kube/config'
 
 
