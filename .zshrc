@@ -125,3 +125,5 @@ for file in ~/.shell.config/*.sh; do
 done
 
 export PATH="$HOME/.local/bin:$PATH"
+
+export KUBE_PROXY_URL="socks5://127.0.0.1:1081"

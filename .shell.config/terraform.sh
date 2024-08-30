@@ -1,2 +1,2 @@
-export AWS_PROFILE=ILZ-DEV-OPS
+export AWS_PROFILE=DMWF-TEST
 export AWS_REGION=eu-central-1

@@ -5,7 +5,7 @@ show_aws() { # This function name must match the module name!
 
   icon="$(  get_tmux_option "@catppuccin_aws_icon"  "󰸏"           )"
   color="$( get_tmux_option "@catppuccin_aws_color" "$thm_orange" )"
-  text="$(  get_tmux_option "@catppuccin_aws_text"  "#( echo $AWS_PROFILE )" )"
+  text="$(  get_tmux_option "@catppuccin_aws_text"  "#( ~/.scripts/get_aws_account.sh )" )"
 
   module=$( build_status_module "$index" "$icon" "$color" "$text" )
 
