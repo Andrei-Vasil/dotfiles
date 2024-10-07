@@ -124,6 +124,14 @@ for file in ~/.shell.config/*.sh; do
   source "$file"
 done
 
+# local binaries such as the ones installed by pip (e.g. bmwaws)
 export PATH="$HOME/.local/bin:$PATH"
 
+# go
+export PATH="/usr/local/go/bin:$PATH"
+
+# neovim
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
 export KUBE_PROXY_URL="socks5://127.0.0.1:1081"
+
