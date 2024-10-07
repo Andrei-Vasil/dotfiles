@@ -43,3 +43,10 @@ Install Tmux Plugin manager TPM:
 ```sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+
+## NVim
+ripgrep is required for Telescope Live Grep functionality
+```sh
+# Install on Ubuntu:
+sudo apt install ripgrep
+```
