@@ -11,7 +11,7 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
-          "ts_ls",
+          -- "ts_ls",
           "gopls",
         }
       })
@@ -22,7 +22,24 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
-      lspconfig.ts_ls.setup({})
+      --[[
+      lspconfig.ts_ls.setup({
+        init_options = {
+          plugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+              languages = {"javascript", "typescript", "vue"},
+            },
+          },
+        },
+        filetypes = {
+          "javascript",
+          "typescript",
+          "vue",
+        },
+      })
+      ]]--
       lspconfig.gopls.setup({})
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})

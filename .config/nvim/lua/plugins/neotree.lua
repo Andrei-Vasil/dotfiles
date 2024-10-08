@@ -7,6 +7,8 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function()
-    vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>")
+    vim.keymap.set("n", "<C-_>", function()  -- actual intended use: Ctrl + / (Ctrl + _ also works)
+      vim.cmd.Neotree("toggle")
+    end, { noremap = true, silent = true, desc = "Toggle Neotree" })
   end
 }
