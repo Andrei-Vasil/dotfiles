@@ -6,7 +6,9 @@ return {
     config.setup({
       ensure_installed = {
         "lua",
-        "javascript"
+        "javascript",
+        "terraform",
+        "hcl",
       },
       highlight = { enable = true },
       indent = { enable = true },

@@ -2,7 +2,12 @@ return {
   {
     "williamboman/mason.nvim",
     config = function()
-      require("mason").setup()
+      require("mason").setup({
+        ensure_installed = {
+          "terraform",
+          "hcl",
+        }
+      })
     end
   },
   {
@@ -11,8 +16,10 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
-          -- "ts_ls",
+          "ts_ls",
           "gopls",
+          "terraformls",
+          "tflint",
         }
       })
     end
@@ -22,7 +29,6 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
-      --[[
       lspconfig.ts_ls.setup({
         init_options = {
           plugins = {
@@ -39,8 +45,9 @@ return {
           "vue",
         },
       })
-      ]]--
       lspconfig.gopls.setup({})
+      lspconfig.terraformls.setup({})
+      lspconfig.tflint.setup({})
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
