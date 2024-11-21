@@ -6,6 +6,11 @@ vim.cmd("set relativenumber")
 vim.cmd("set clipboard=unnamedplus")
 vim.g.mapleader = " "
 
+
+-- center line on half-window up/down
+vim.cmd("nnoremap <C-d> <C-d>zz")
+vim.cmd("nnoremap <C-u> <C-u>zz")
+
 -- Tabpages
 vim.cmd("nnoremap <leader>c :tabnew<CR>")
 vim.cmd("nnoremap <leader>& :tabclose<CR>")
