@@ -7,7 +7,6 @@ vim.cmd("set number")
 vim.cmd("set clipboard=unnamedplus")
 vim.g.mapleader = " "
 
-
 -- center line on half-window up/down
 vim.cmd("nnoremap <C-d> <C-d>zz")
 vim.cmd("nnoremap <C-u> <C-u>zz")
@@ -19,7 +18,7 @@ vim.cmd("nnoremap <leader>n :+tabnext<CR>")
 vim.cmd("nnoremap <leader>p :-tabnext<CR>")
 
 -- Horizontal Split
-vim.cmd("nnoremap <leader>\" :split<CR>")
+vim.cmd('nnoremap <leader>" :split<CR>')
 
 -- Vertical Split
 vim.cmd("nnoremap <leader>% :vsplit<CR>")

@@ -26,6 +26,19 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "folke/lazydev.nvim",
+        ft = "lua", --only load on lua files
+        opts = {
+          library = {
+            -- See the configuration section for more details
+            -- Load luvit types when the `vim.uv` word is found
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+        },
+      },
+    },
     config = function()
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
@@ -50,8 +63,13 @@ return {
       lspconfig.tflint.setup({})
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+      vim.cmd("nnoremap <leader>gb <C-t>") -- go back
+      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+      vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
       vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, {})
+      vim.keymap.set("n", "<leader>id", vim.diagnostic.open_float, {})
     end
   }
 }
