@@ -26,6 +26,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    lazy = false,
     dependencies = {
       {
         "folke/lazydev.nvim",
@@ -40,9 +41,14 @@ return {
       },
     },
     config = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
       local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({})
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+      })
       lspconfig.ts_ls.setup({
+        capabilities = capabilities,
         init_options = {
           plugins = {
             {
@@ -58,9 +64,15 @@ return {
           "vue",
         },
       })
-      lspconfig.gopls.setup({})
-      lspconfig.terraformls.setup({})
-      lspconfig.tflint.setup({})
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.terraformls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.tflint.setup({
+        capabilities = capabilities,
+      })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.cmd("nnoremap <leader>gb <C-t>") -- go back
