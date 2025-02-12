@@ -9,7 +9,7 @@ AWS_PROFILE_CONFIG_FILE = f'{os.environ["HOME"]}/.shell.config/terraform.sh'
 
 
 def get_profile_header(line: str):
-  return re.search('^\[(.+)\]$', line)
+  return re.search('^\[profile (.+)\]$', line)
 
 
 def read_blob(creds) -> dict:
@@ -44,7 +44,7 @@ def read_aws_profiles(file_path: str) -> dict:
 
 
 def get_aws_account_id(profile_data: dict) -> str:
-  return re.search(':([0-9]+):', profile_data['role_arn']).group(1)
+  return re.search('([0-9]+)', profile_data['sso_account_id']).group(1)
 
 
 def get_lite_profiles(profiles: dict) -> dict:
@@ -54,7 +54,7 @@ def get_lite_profiles(profiles: dict) -> dict:
 
 
 def switch_aws_profile():
-  full_profiles = read_aws_profiles(f'{os.environ["HOME"]}/.aws/credentials')
+  full_profiles = read_aws_profiles(f'{os.environ["HOME"]}/.aws/config')
   profiles = get_lite_profiles(full_profiles)
   answer = InquirerPy.inquirer.select(
     message='Select your environment',
