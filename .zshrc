@@ -128,5 +128,6 @@ export PATH="/usr/local/go/bin:$PATH"
 # neovim
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
-# personal aliasses
+# personal aliasses & preferences
 source ~/.aliases
+source ~/.zshrc-macos-keybinds

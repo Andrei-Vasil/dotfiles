@@ -3,3 +3,4 @@ alias stop-docker='colima stop'
 alias restart-docker='stop-docker && start-docker'
 
 alias ll='ls -alh'
+
