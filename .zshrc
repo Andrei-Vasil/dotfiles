@@ -119,12 +119,7 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Personal preferences
-for file in ~/.shell.config/*.sh; do
-  source "$file"
-done
-
-# local binaries such as the ones installed by pip (e.g. bmwaws)
+# local binaries such as the ones installed by pip 
 export PATH="$HOME/.local/bin:$PATH"
 
 # go
@@ -133,5 +128,5 @@ export PATH="/usr/local/go/bin:$PATH"
 # neovim
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
-export KUBE_PROXY_URL="socks5://127.0.0.1:1081"
-
+# personal aliasses
+source .aliases

@@ -1,0 +1,5 @@
+alias start-docker='colima start --cpu 10 --memory 8 --arch aarch64 --vm-type=vz --vz-rosetta --network-address && export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r ".address")'
+alias stop-docker='colima stop'
+alias restart-docker='stop-docker && start-docker'
+
+alias ll='ls -alh'
