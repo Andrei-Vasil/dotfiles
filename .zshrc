@@ -129,4 +129,4 @@ export PATH="/usr/local/go/bin:$PATH"
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # personal aliasses
-source .aliases
+source ~/.aliases
