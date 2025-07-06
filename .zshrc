@@ -131,3 +131,13 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 # personal aliasses & preferences
 source ~/.aliases
 source ~/.zshrc-macos-keybinds
+
+
+# Start TMUX or attach to first available session
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  if tmux list-sessions &>/dev/null; then
+#    exec tmux attach-session -t $(tmux list-session | head -n 1 | awk -F":" '{print $1}')
+#  else
+#    exec tmux
+#  fi
+#fi
