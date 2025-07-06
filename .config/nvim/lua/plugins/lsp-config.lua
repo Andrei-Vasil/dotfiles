@@ -20,6 +20,11 @@ return {
           "gopls",
           "terraformls",
           "tflint",
+          "pylsp",
+          "ansiblels",
+          "yamlls",
+          "helm_ls",
+          "bashls",
         }
       })
     end
@@ -72,6 +77,34 @@ return {
         capabilities = capabilities,
       })
       lspconfig.tflint.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.pylsp.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.ansiblels.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.yamlls.setup({
+        capabilities = capabilities,
+        settings = {
+          yaml = {
+            schemaStore = {
+              url = "https://www.schemastore.org/api/json/catalog.json",
+              enable = true,
+            },
+            schemas = {
+              kubernetes = {
+                "/*.k8s.yaml"
+              }
+            }
+          }
+        }
+      })
+      lspconfig.helm_ls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.bashls.setup({
         capabilities = capabilities,
       })
 

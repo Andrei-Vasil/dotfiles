@@ -2,13 +2,17 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   config = function()
-    local config = require("nvim-treesitter.configs")
-    config.setup({
+    require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "lua",
         "javascript",
         "terraform",
-        "hcl",
+        "go",
+        "python",
+        "yaml",
+        "markdown",
+        "vim",
+        "terraform",
       },
       highlight = { enable = true },
       indent = { enable = true },
