@@ -29,6 +29,13 @@ vim.cmd("nnoremap <C-Right> <C-w>>")
 vim.cmd("nnoremap <C-Up> <C-w>-")
 vim.cmd("nnoremap <C-Down> <C-w>+")
 
+-- Quickfix options
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+
+-- Oil.nvim
+vim.keymap.set("n", "-", "<cmd>Oil<CR>")
+
 -- Quit & Save Options
 vim.cmd("nnoremap <leader>w :w<CR>")
 vim.cmd("nnoremap <leader>x :wq<CR>")
