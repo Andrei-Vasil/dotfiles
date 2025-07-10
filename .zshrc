@@ -125,6 +125,9 @@ export PATH="$HOME/.local/bin:$PATH"
 # go
 export PATH="/usr/local/go/bin:$PATH"
 
+# python
+export PATH="/Users/andrei/Library/Python/3.9/bin:$PATH"
+
 # neovim
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
