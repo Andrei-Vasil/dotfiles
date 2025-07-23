@@ -44,3 +44,6 @@ vim.cmd("nnoremap <leader>q :wqa<CR>")
 -- Switch camelCase and snake_case
 local switch_case = require("utils.switch-case").switch_case
 vim.keymap.set('n', '<leader>sc', switch_case, { noremap = true, silent = true })
+
+-- Reset search
+vim.cmd('nnoremap <leader>rs :let @/ = ""<CR>')
