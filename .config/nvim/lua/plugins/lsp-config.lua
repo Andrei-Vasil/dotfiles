@@ -1,14 +1,15 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     config = function()
       require("mason").setup({
         ensure_installed = {
           "terraform",
           "hcl",
-        }
+          "prettier",
+        },
       })
-    end
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -25,15 +26,16 @@ return {
           "yamlls",
           "helm_ls",
           "bashls",
-        }
+          "eslint",
+        },
       })
-    end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
     lazy = false,
     dependencies = {
-      'saghen/blink.cmp',
+      "saghen/blink.cmp",
       {
         "folke/lazydev.nvim",
         ft = "lua", --only load on lua files
@@ -47,7 +49,7 @@ return {
       },
     },
     config = function()
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({
@@ -60,7 +62,7 @@ return {
             {
               name = "@vue/typescript-plugin",
               location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-              languages = {"javascript", "typescript", "vue"},
+              languages = { "javascript", "typescript", "vue" },
             },
           },
         },
@@ -95,11 +97,11 @@ return {
             },
             schemas = {
               kubernetes = {
-                "/*.k8s.yaml"
-              }
-            }
-          }
-        }
+                "/*.k8s.yaml",
+              },
+            },
+          },
+        },
       })
       lspconfig.helm_ls.setup({
         capabilities = capabilities,
@@ -114,8 +116,8 @@ return {
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
       vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
-      vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, {})
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>id", vim.diagnostic.open_float, {})
-    end
-  }
+    end,
+  },
 }

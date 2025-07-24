@@ -17,7 +17,9 @@ return {
       local presets = require("markview.presets");
 
       require("markview").setup({
-        filetypes = { "markdown", "quarto", "rmd", "yaml" },
+        preview = {
+          filetypes = { "markdown", "quarto", "rmd", "yaml" },
+        },
         markdown = {
           headings = presets.headings.slanted,
           tables = presets.tables.single,
