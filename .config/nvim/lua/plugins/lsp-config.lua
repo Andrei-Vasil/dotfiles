@@ -105,6 +105,36 @@ return {
       })
       lspconfig.helm_ls.setup({
         capabilities = capabilities,
+        settings = {
+          ['helm-ls'] = {
+            logLevel = "info",
+            valuesFiles = {
+              mainValuesFile = "values.yaml",
+              lintOverlayValuesFile = "values.lint.yaml",
+              additionalValuesFilesGlobPattern = "values*.yaml"
+            },
+            helmLint = {
+              enabled = true,
+              ignoredMessages = {},
+            },
+            yamlls = {
+              enabled = true,
+              enabledForFilesGlob = "*.{yaml,yml}",
+              diagnosticsLimit = 50,
+              showDiagnosticsDirectly = false,
+              path = "yaml-language-server",
+              initTimeoutSeconds = 3,
+              config = {
+                schemas = {
+                  kubernetes = "templates/**",
+                },
+                completion = true,
+                hover = true,
+                -- any other config from https://github.com/redhat-developer/yaml-language-server#language-server-settings
+              }
+            }
+          }
+        }
       })
       lspconfig.bashls.setup({
         capabilities = capabilities,
@@ -119,5 +149,10 @@ return {
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>id", vim.diagnostic.open_float, {})
     end,
+  },
+  {
+    "qvalentin/helm-ls.nvim",
+    ft = "helm",
+    opts = {},
   },
 }
