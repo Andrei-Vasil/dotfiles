@@ -28,7 +28,7 @@ return {
           enable = true,
         },
         yaml = {
-          enable = true,
+          enable = false,
           ---@type markview.config.yaml.properties
           properties = {
               enable = true,
