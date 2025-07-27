@@ -106,6 +106,7 @@ return {
         capabilities = capabilities,
       })
       lspconfig.yamlls.setup(require("schema-companion").setup_client({
+        filetypes = { "yaml" },
         capabilities = capabilities,
         settings = {
           yaml = {
@@ -170,8 +171,7 @@ return {
     ft = "helm",
     opts = {
       conceal_templates = {
-        -- enable the replacement of templates with virtual text of their current values
-        enabled = true, -- tree-sitter must be setup for this feature
+        enabled = false,
       },
       indent_hints = {
         -- enable hints for indent and nindent functions
