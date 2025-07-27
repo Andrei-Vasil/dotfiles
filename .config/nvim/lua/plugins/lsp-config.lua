@@ -32,10 +32,28 @@ return {
     end,
   },
   {
+    "cenk1cenk2/schema-companion.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    config = function()
+      require("schema-companion").setup({
+        enable_telescope = true,
+        matchers = {
+          -- add your matchers
+          require("schema-companion.matchers.kubernetes").setup({ version = "master" }),
+        },
+      })
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     lazy = false,
     dependencies = {
       "saghen/blink.cmp",
+      "cenk1cenk2/schema-companion.nvim",
+      "b0o/schemastore.nvim",
       {
         "folke/lazydev.nvim",
         ft = "lua", --only load on lua files
@@ -87,23 +105,20 @@ return {
       lspconfig.ansiblels.setup({
         capabilities = capabilities,
       })
-      lspconfig.yamlls.setup({
+      lspconfig.yamlls.setup(require("schema-companion").setup_client({
         capabilities = capabilities,
         settings = {
           yaml = {
             schemaStore = {
-              url = "https://www.schemastore.org/api/json/catalog.json",
-              enable = true,
+              url = "",
+              enable = false,
             },
-            schemas = {
-              kubernetes = {
-                "/*.k8s.yaml",
-              },
-            },
+            schemas = require('schemastore').yaml.schemas(),
           },
         },
-      })
+      }))
       lspconfig.helm_ls.setup({
+        filetypes = { "helm", "helmfile" },
         capabilities = capabilities,
         settings = {
           ['helm-ls'] = {
