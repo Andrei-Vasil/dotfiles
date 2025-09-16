@@ -1,0 +1,8 @@
+# This is Git's per-user configuration file.
+[user]
+name = Andrei Vasil
+email = andrei.vasil@n26.com
+[init]
+	templatedir = ~/.config/git/templates
+[core]
+	excludesFile = ~/.config/git/ignore

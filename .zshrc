@@ -144,3 +144,12 @@ source ~/.zshrc-macos-keybinds
 #    exec tmux
 #  fi
 #fi
+
+alias vim='nvim'
+
+# kubectl
+export KUBE_EDITOR='nvim'
+
+# MacOS docker 
+export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock

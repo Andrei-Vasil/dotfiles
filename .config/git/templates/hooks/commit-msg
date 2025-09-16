@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+N26_ORG=$(git remote get-url origin | grep -Eo "[:\/](n26)\/")
+
+if [[ -z "${N26_ORG}" ]]; then
+    exit 0
+fi
+
+JIRA_TICKET_REGEX="^[A-Z]+[0-9]?-[0-9]+"
+
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "${BRANCH_NAME}" = "HEAD" ]; then
+  # Rewording as part of a rebase will not have a branch name
+  exit 0
+fi
+
+BRANCH_NAME_JIRA_TICKET=$(echo "${BRANCH_NAME}" | grep -Eo "${JIRA_TICKET_REGEX}")
+
+if [[ -z "${BRANCH_NAME_JIRA_TICKET}" ]]; then
+    echo "JIRA ticket not found in branch name: ${BRANCH_NAME}"
+    echo "Please rename the branch to include it: git branch -m FOO-123-${BRANCH_NAME}"
+    exit 1
+fi
+
+COMMIT_FILE=$1
+COMMIT_MESSAGE=$(cat $1)
+COMMIT_MESSAGE_JIRA_TICKET=$(echo "${COMMIT_MESSAGE}" | grep -v '^#' | grep -Eo "${JIRA_TICKET_REGEX}")
+
+if [[ -z "${COMMIT_MESSAGE_JIRA_TICKET}" ]]; then
+    echo "[${BRANCH_NAME_JIRA_TICKET}] ${COMMIT_MESSAGE}" > ${COMMIT_FILE}
+    echo "JIRA ticket '${BRANCH_NAME_JIRA_TICKET}' prepended to commit message"
+fi
