@@ -19,6 +19,7 @@ return {
           "lua_ls",
           "ts_ls",
           "gopls",
+          "rust_analyzer",
           "terraformls",
           "tflint",
           "pylsp",
@@ -91,6 +92,9 @@ return {
         },
       })
       lspconfig.gopls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.rust_analyzer.setup({
         capabilities = capabilities,
       })
       lspconfig.terraformls.setup({
