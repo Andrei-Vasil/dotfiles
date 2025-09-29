@@ -1,13 +1,19 @@
 return {
 	{
-		"nvim-pack/nvim-spectre",
+		-- "nvim-pack/nvim-spectre",
+		"Andrei-Vasil/nvim-spectre",
+    branch = "multiline",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
 		config = function()
 			require("spectre").setup({
+        default = {
+            replace = {
+                cmd = "oxi"
+           }
+        },
 				find_engine = {
-					-- rg is map with finder_cmd
 					["rg"] = {
 						cmd = "rg",
 						args = {
@@ -32,19 +38,9 @@ return {
 						},
 					},
 				},
-				replace_engine = {
-					["sed"] = {
-						cmd = "sed",
-						args = nil,
-						options = {
-							["ignore-case"] = {
-								value = "--ignore-case",
-								icon = "[I]",
-								desc = "ignore case",
-							},
-						},
-					},
-				},
+        replace_engine = {
+          cmd = "oxi",
+        },
 			})
 
 			vim.keymap.set("n", "<leader>st", '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre" })
