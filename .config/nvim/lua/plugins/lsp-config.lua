@@ -36,16 +36,9 @@ return {
     "cenk1cenk2/schema-companion.nvim",
     dependencies = {
       { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope.nvim" },
     },
     config = function()
-      require("schema-companion").setup({
-        enable_telescope = true,
-        matchers = {
-          -- add your matchers
-          require("schema-companion.matchers.kubernetes").setup({ version = "master" }),
-        },
-      })
+      require("schema-companion").setup({})
     end,
   },
   {
@@ -70,11 +63,10 @@ return {
     config = function()
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
+      vim.lsp.config('*', {
+        capabilities = capabilities
       })
-      lspconfig.ts_ls.setup({
+      vim.lsp.config('ts_ls', {
         capabilities = capabilities,
         init_options = {
           plugins = {
@@ -90,74 +82,6 @@ return {
           "typescript",
           "vue",
         },
-      })
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.rust_analyzer.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.terraformls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.tflint.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.pylsp.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.ansiblels.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.yamlls.setup(require("schema-companion").setup_client({
-        filetypes = { "yaml" },
-        capabilities = capabilities,
-        settings = {
-          yaml = {
-            schemaStore = {
-              url = "",
-              enable = false,
-            },
-            schemas = require('schemastore').yaml.schemas(),
-          },
-        },
-      }))
-      lspconfig.helm_ls.setup({
-        filetypes = { "helm", "helmfile" },
-        capabilities = capabilities,
-        settings = {
-          ['helm-ls'] = {
-            logLevel = "info",
-            valuesFiles = {
-              mainValuesFile = "values.yaml",
-              lintOverlayValuesFile = "values.lint.yaml",
-              additionalValuesFilesGlobPattern = "values*.yaml"
-            },
-            helmLint = {
-              enabled = true,
-              ignoredMessages = {},
-            },
-            yamlls = {
-              enabled = true,
-              enabledForFilesGlob = "*.{yaml,yml}",
-              diagnosticsLimit = 50,
-              showDiagnosticsDirectly = false,
-              path = "yaml-language-server",
-              initTimeoutSeconds = 3,
-              config = {
-                schemas = {
-                  kubernetes = "templates/**",
-                },
-                completion = true,
-                hover = true,
-                -- any other config from https://github.com/redhat-developer/yaml-language-server#language-server-settings
-              }
-            }
-          }
-        }
-      })
-      lspconfig.bashls.setup({
-        capabilities = capabilities,
       })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
