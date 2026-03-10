@@ -28,6 +28,7 @@ return {
           "helm_ls",
           "bashls",
           "eslint",
+          -- "java_language_server",
         },
       })
     end,
