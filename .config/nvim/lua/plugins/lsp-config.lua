@@ -28,6 +28,7 @@ return {
           "helm_ls",
           "bashls",
           "eslint",
+          "jsonls",
           -- "java_language_server",
         },
       })
@@ -64,10 +65,10 @@ return {
     config = function()
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-      vim.lsp.config('*', {
-        capabilities = capabilities
+      vim.lsp.config("*", {
+        capabilities = capabilities,
       })
-      vim.lsp.config('ts_ls', {
+      vim.lsp.config("ts_ls", {
         capabilities = capabilities,
         init_options = {
           plugins = {
@@ -82,6 +83,15 @@ return {
           "javascript",
           "typescript",
           "vue",
+        },
+      })
+      vim.lsp.config("jsonls", {
+        capabilities = capabilities,
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
         },
       })
 
