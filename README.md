@@ -69,7 +69,40 @@ Install bluetooth GUI:
 sudo pacman -S blueman
 ```
 
-For wallpapers:
+Wallpapers:
 ```sh
 sudo pacman -S awww
+```
+
+File manager:
+```sh
+sudo pacman -S thunar
+```
+
+App selector menu:
+```sh
+sudo pacman -S rofi
+```
+
+Status bar:
+```sh
+sudo pacman -S waybar
+```
+
+For TMUX compatibility:
+```sh
+# install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env" || source "$HOME/.cargo/env.fish"
+# clone and build hypr-nav
+git clone https://github.com/joe-butler-23/hypr-nav
+cd hypr-nav
+cargo build --release
+# install to PATH
+sudo cp target/release/hypr-tmux-nav /usr/local/bin/
+sudo cp target/release/hypr-smart-close /usr/local/bin/
+sudo cp target/release/hypr-nav /usr/local/bin/
+# remove source code
+cd ..
+rm -rf hypr-nav
 ```

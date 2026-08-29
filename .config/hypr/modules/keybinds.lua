@@ -1,6 +1,6 @@
 local terminal = "kitty"
-local fileManager = "dolphin"
-local menu = "hyprlauncher"
+local fileManager = "thunar"
+local menu = "rofi -show drun"
 
 local mainMod = "SUPER"
 
@@ -18,11 +18,11 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
--- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+-- Move focus with CTRL + hjkl, tmux-aware
+hl.bind("CTRL" .. " + h", hl.dsp.exec_cmd("hypr-tmux-nav left"))
+hl.bind("CTRL" .. " + l", hl.dsp.exec_cmd("hypr-tmux-nav right"))
+hl.bind("CTRL" .. " + k", hl.dsp.exec_cmd("hypr-tmux-nav up"))
+hl.bind("CTRL" .. " + j", hl.dsp.exec_cmd("hypr-tmux-nav down"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
