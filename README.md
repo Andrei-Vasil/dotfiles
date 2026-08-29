@@ -22,7 +22,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ## Stow
 Install [stow](https://www.gnu.org/software/stow/):
 ```sh
-sudo apt install stow  # use your preferred package manager
+sudo pacman -S stow  # use your preferred package manager
 ```
 Run:
 ```sh
@@ -35,18 +35,41 @@ Further reading on [.stow-local-ignore](https://www.gnu.org/software/stow/manual
 ## Tmux
 Install [tmux](https://github.com/tmux/tmux/wiki):
 ```sh
-sudo apt install tmux  # use your preferred package manager
+sudo pacman -S tmux  # use your preferred package manager
 ```
 
 ### TPM
 Install Tmux Plugin manager TPM:
 ```sh
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
+
+Install the plugins by pressing `<prefix> + I` inside tmux
 
 ## NVim
 ripgrep is required for Telescope Live Grep functionality
 ```sh
-# Install on Ubuntu:
-sudo apt install ripgrep
+# LSPs and tree-sitter parser:
+sudo pacman -S tree-sitter tree-sitter-cli nodejs npm go
+# Telescope:
+sudo pacman -S ripgrep
+# Clipboard:
+sudo pacman -S wl-clipboard
+```
+
+## Hyprland
+
+Install hyprland, kitty and uwsm (Universal Wayland Session Manager - useful for systemd integration)
+```sh
+sudo pacman -S hypr kitty uwsm
+```
+
+Install bluetooth GUI:
+```sh
+sudo pacman -S blueman
+```
+
+For wallpapers:
+```sh
+sudo pacman -S awww
 ```
