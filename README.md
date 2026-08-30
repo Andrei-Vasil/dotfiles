@@ -112,3 +112,8 @@ sudo cp target/release/hypr-nav /usr/local/bin/
 cd ..
 rm -rf hypr-nav
 ```
+
+Notifications:
+```sh
+sudo pacman -S swaync
+```

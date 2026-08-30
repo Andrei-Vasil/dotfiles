@@ -1,6 +1,7 @@
 local terminal = "kitty"
 local fileManager = "thunar"
 local menu = "$XDG_CONFIG_HOME/rofi/launcher.sh"
+local notifications = "swaync-client -t"
 
 local mainMod = "SUPER"
 
@@ -15,6 +16,7 @@ hl.bind(
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(notifications))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("$XDG_CONFIG_HOME/waybar/scripts/launch.sh"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
