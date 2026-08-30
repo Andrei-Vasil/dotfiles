@@ -1,6 +1,6 @@
 local terminal = "kitty"
 local fileManager = "thunar"
-local menu = "rofi -show drun"
+local menu = "$XDG_CONFIG_HOME/rofi/launcher.sh"
 
 local mainMod = "SUPER"
 
