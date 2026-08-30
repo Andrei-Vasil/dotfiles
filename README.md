@@ -64,7 +64,12 @@ Install hyprland, kitty and uwsm (Universal Wayland Session Manager - useful for
 sudo pacman -S hypr kitty uwsm
 ```
 
-Install bluetooth GUI:
+Fonts:
+```sh
+sudo pacman -S ttf-jetbrains-mono-nerd
+```
+
+Bluetooth GUI:
 ```sh
 sudo pacman -S blueman
 ```
@@ -86,7 +91,8 @@ sudo pacman -S rofi
 
 Status bar:
 ```sh
-sudo pacman -S waybar
+paru -S waybar-cava # waybar with built-in cava support
+# sudo pacman -S waybar # alternatively, if not using cava
 ```
 
 For TMUX compatibility:
