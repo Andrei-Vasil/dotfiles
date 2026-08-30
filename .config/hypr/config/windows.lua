@@ -50,3 +50,9 @@ hl.layer_rule({
   animation = "slide bottom",
   dim_around = true,
 })
+
+hl.layer_rule({
+  name = "notifications-animations",
+  match = { namespace = "swaync-control-center" },
+  animation = "slide top",
+})
