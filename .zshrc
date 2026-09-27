@@ -11,26 +11,6 @@ fi
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# vi mode
-bindkey -v
-KEYTIMEOUT=1
-
-# make insert mode behave like vim's (delete past insert start)
-bindkey -M viins '^?' backward-delete-char
-bindkey -M viins '^H' backward-delete-char
-bindkey -M viins '^W' backward-kill-word
-bindkey -M viins '^U' backward-kill-line
-
-# v in normal mode: edit command in $EDITOR
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd 'v' edit-command-line
-
-autoload -U select-word-style
-select-word-style bash
-
-source <(fzf --zsh)
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -153,6 +133,27 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # personal aliasses & preferences
 source ~/.aliases
+
+
+# vi mode
+bindkey -v
+KEYTIMEOUT=1
+
+# make insert mode behave like vim's (delete past insert start)
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^U' backward-kill-line
+
+# v in normal mode: edit command in $EDITOR
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
+autoload -U select-word-style
+select-word-style bash
+
+source <(fzf --zsh)
 
 
 # Start TMUX or attach to first available session
