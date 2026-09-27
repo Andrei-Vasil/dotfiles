@@ -7,7 +7,12 @@ return {
       view_options = {
         -- Show files and directories that start with "."
         show_hidden = true,
-      }
+      },
+      keymaps = {
+        -- let vim-tmux-navigator handle these
+        ["<C-h>"] = false,
+        ["<C-l>"] = false,
+      },
     },
     -- Optional dependencies
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
