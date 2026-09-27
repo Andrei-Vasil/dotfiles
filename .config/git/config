@@ -6,3 +6,6 @@ email = andrei.vasil@n26.com
 	templatedir = ~/.config/git/templates
 [core]
 	excludesFile = ~/.config/git/ignore
+[safe]
+	directory = /app
+	directory = /app
