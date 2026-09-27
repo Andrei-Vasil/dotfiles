@@ -22,7 +22,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ## Stow
 Install [stow](https://www.gnu.org/software/stow/):
 ```sh
-sudo apt install stow  # use your preferred package manager
+sudo pacman -S stow  # use your preferred package manager
 ```
 Run:
 ```sh
@@ -35,18 +35,85 @@ Further reading on [.stow-local-ignore](https://www.gnu.org/software/stow/manual
 ## Tmux
 Install [tmux](https://github.com/tmux/tmux/wiki):
 ```sh
-sudo apt install tmux  # use your preferred package manager
+sudo pacman -S tmux  # use your preferred package manager
 ```
 
 ### TPM
 Install Tmux Plugin manager TPM:
 ```sh
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
+
+Install the plugins by pressing `<prefix> + I` inside tmux
 
 ## NVim
 ripgrep is required for Telescope Live Grep functionality
 ```sh
-# Install on Ubuntu:
-sudo apt install ripgrep
+# LSPs and tree-sitter parser:
+sudo pacman -S tree-sitter tree-sitter-cli nodejs npm go
+# Telescope:
+sudo pacman -S ripgrep
+# Clipboard:
+sudo pacman -S wl-clipboard
+```
+
+## Hyprland
+
+Install hyprland, kitty and uwsm (Universal Wayland Session Manager - useful for systemd integration)
+```sh
+sudo pacman -S hypr kitty uwsm
+```
+
+Fonts:
+```sh
+sudo pacman -S ttf-jetbrains-mono-nerd
+```
+
+Bluetooth GUI:
+```sh
+sudo pacman -S blueman
+```
+
+Wallpapers:
+```sh
+sudo pacman -S awww
+```
+
+File manager:
+```sh
+sudo pacman -S thunar
+```
+
+App selector menu:
+```sh
+sudo pacman -S rofi
+```
+
+Status bar:
+```sh
+paru -S waybar-cava # waybar with built-in cava support
+# sudo pacman -S waybar # alternatively, if not using cava
+```
+
+For TMUX compatibility:
+```sh
+# install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env" || source "$HOME/.cargo/env.fish"
+# clone and build hypr-nav
+git clone https://github.com/joe-butler-23/hypr-nav
+cd hypr-nav
+cargo build --release
+# install to PATH
+sudo cp target/release/hypr-tmux-nav /usr/local/bin/
+sudo cp target/release/hypr-smart-close /usr/local/bin/
+sudo cp target/release/hypr-nav /usr/local/bin/
+# remove source code
+cd ..
+rm -rf hypr-nav
+```
+
+Notifications:
+```sh
+sudo pacman -S swaync
 ```

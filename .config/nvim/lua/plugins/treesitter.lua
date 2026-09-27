@@ -1,10 +1,27 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  dependencies = { "OXY2DEV/markview.nvim" },
+  branch = "main",
   build = ":TSUpdate",
   config = function()
-    require("nvim-treesitter.configs").setup({
-      ensure_installed = {
+    require("nvim-treesitter").setup({
+      install_dir = vim.fn.stdpath("data") .. "/site",
+    })
+
+    require("nvim-treesitter").install({
+      "lua",
+      "javascript",
+      "terraform",
+      "go",
+      "gomod",
+      "gosum",
+      "python",
+      "vim",
+      "helm",
+      "yaml",
+    })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = {
         "lua",
         "javascript",
         "terraform",
@@ -13,21 +30,13 @@ return {
         "gosum",
         "python",
         "vim",
-        "terraform",
         "helm",
         "yaml",
-        -- OXY2DEV/markview.nvim requirements:
-        "markdown",
-        "markdown_inline",
-        "yaml",  -- optional, but required for lsp
-        "html",  -- optional
-        "latex", -- optional
-        "typst", -- optional
       },
-      sync_install = true,
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
+      callback = function()
+        vim.treesitter.start()
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end,
     })
-  end
+  end,
 }
