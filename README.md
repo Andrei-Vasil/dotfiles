@@ -79,6 +79,11 @@ Wallpapers:
 sudo pacman -S awww
 ```
 
+Select a wallpaper with awww:
+```sh
+awww img /path/to/wallpaper
+```
+
 File manager:
 ```sh
 sudo pacman -S thunar
