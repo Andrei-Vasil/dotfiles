@@ -94,12 +94,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR=nvim
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -133,7 +128,27 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # personal aliasses & preferences
 source ~/.aliases
-source ~/.zshrc-macos-keybinds
+
+
+# vi mode
+bindkey -v
+KEYTIMEOUT=1
+
+# make insert mode behave like vim's (delete past insert start)
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^U' backward-kill-line
+
+# v in normal mode: edit command in $EDITOR
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
+autoload -U select-word-style
+select-word-style bash
+
+source <(fzf --zsh)
 
 
 # Start TMUX or attach to first available session
@@ -150,6 +165,4 @@ alias vim='nvim'
 # kubectl
 export KUBE_EDITOR='nvim'
 
-# MacOS docker 
-export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
-export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+source ~/.workrc
