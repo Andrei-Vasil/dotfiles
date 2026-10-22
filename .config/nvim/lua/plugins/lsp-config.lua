@@ -107,11 +107,11 @@ return {
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.cmd("nnoremap <leader>gb <C-t>") -- go back
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
-			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<leader>id", vim.diagnostic.open_float, {})
+			vim.keymap.set("n", "<leader>grr", vim.lsp.buf.references, {})
+			vim.keymap.set("n", "<leader>gri", vim.lsp.buf.implementation, {})
+			vim.keymap.set("n", "<leader>grn", vim.lsp.buf.rename, {})
+			vim.keymap.set({ "n", "v" }, "<leader>gra", vim.lsp.buf.code_action, {})
+			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {})
 		end,
 	},
 	{
