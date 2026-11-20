@@ -17,5 +17,6 @@ email = andrei.vasil@n26.com
   navigate = true      # n/N to jump between files
   side-by-side = true
   line-numbers = true
+  wrap-max-lines = unlimited
 [merge]
   conflictStyle = zdiff3
